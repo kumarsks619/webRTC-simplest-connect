@@ -4,9 +4,7 @@ const offer = { type: 'offer', sdp: '' }
 const rc = new RTCPeerConnection()
 
 rc.onicecandidate = (e) =>
-    console.log(
-        '[New ICE Candidate! Reprinting SDP] ' + JSON.stringify(rc.localDescription)
-    )
+    console.log('[New ICE Candidate] ' + JSON.stringify(rc.localDescription))
 
 rc.ondatachannel = (e) => {
     rc.dc = e.channel

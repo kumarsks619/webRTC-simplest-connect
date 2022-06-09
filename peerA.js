@@ -1,15 +1,13 @@
 const lc = new RTCPeerConnection()
 
-const dc = lc.createDataChannel('cool-channel')
+const dc = lc.createDataChannel('some-random-channel-name')
 
 dc.onmessage = (e) => console.log('[New Message Received] ' + e.data)
 
 dc.onopen = (e) => console.log('[New Connection Opened]')
 
 lc.onicecandidate = (e) =>
-    console.log(
-        '[New ICE Candidate! Reprinting SDP] ' + JSON.stringify(lc.localDescription)
-    )
+    console.log('[New ICE Candidate] ' + JSON.stringify(lc.localDescription))
 
 lc.createOffer()
     .then((o) => lc.setLocalDescription(o))
